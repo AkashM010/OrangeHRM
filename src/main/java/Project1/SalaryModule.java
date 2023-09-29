@@ -19,32 +19,18 @@ public class SalaryModule {
 	WebDriver driver;
 	SoftAssert softAssertion = new SoftAssert();
 	boolean actual = false;
+	static PageObject obj;
 
 	@BeforeTest
 	public void setup() throws Exception {
-		data.setup();
-		driver = data.getDriver();
-		data.login();
-		data.pim();
-		data.addEmployee();
+		PageObject.setup();
+		driver = PageObject.getDriver();
+		obj = new PageObject(driver);
+		PageObject.login();
+		PageObject.pim();
+		PageObject.addEmployee();
 
 	}
-
-//	@BeforeClass
-//	public void preConditions() throws Exception {
-//		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
-//		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
-//		driver.findElement(By.tagName("button")).click();
-//		Thread.sleep(10000);
-//		driver.findElement(By.xpath("//span[text()='PIM']")).click();
-//		Thread.sleep(10000);
-//		driver.findElement(By.xpath("//a[text()='Add Employee']")).click();
-//		Thread.sleep(2000);
-//		driver.findElement(By.xpath("//input[@name='firstName']")).sendKeys("Random");
-//		driver.findElement(By.xpath("//input[@name='middleName']")).sendKeys("Mid");
-//		driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys("Name");
-//		driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
-//	}
 
 	@AfterTest
 	public void teardown() {

@@ -18,10 +18,10 @@ public class EmployeeListTab {
 
 	@BeforeTest
 	public void setup() throws Exception {
-		data.setup();
-		driver = data.getDriver();
-		data.login();
-		data.pim();
+		PageObject.setup();
+		driver = PageObject.getDriver();
+		PageObject.login();
+		PageObject.pim();
 	}
 
 	@AfterTest

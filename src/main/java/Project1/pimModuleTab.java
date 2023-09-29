@@ -16,8 +16,8 @@ public class pimModuleTab {
 
 	@BeforeTest
 	public void setup() throws Exception {
-		data.setup();
-		driver = data.getDriver();
+		PageObject.setup();
+		driver = PageObject.getDriver();
 		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
 		driver.findElement(By.tagName("button")).click();
@@ -25,12 +25,12 @@ public class pimModuleTab {
 
 	@AfterTest
 	public void teardown() {
-		data.close();
+		PageObject.close();
 	}
 
 	@Test
 	public void testcases() throws Exception {
-		data.implicitSync();
+		PageObject.implicitSync();
 		boolean displayed = driver.findElement(By.xpath("//span[text()='PIM']")).isDisplayed();
 		softAssertion.assertEquals(displayed, true);
 		boolean enabled = driver.findElement(By.xpath("//span[text()='PIM']")).isEnabled();

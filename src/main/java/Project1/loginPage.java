@@ -25,11 +25,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class loginPage {
 
 	private WebDriver driver;
+	static PageObject obj;
 
 	@BeforeMethod
 	public void setUp() {
-		data.setup();
-		driver = data.getDriver();
+		PageObject.setup();
+		driver = PageObject.getDriver();
+		obj = new PageObject(driver);
 	}
 
 	@AfterMethod
@@ -60,12 +62,8 @@ public class loginPage {
 
 	@Test(dataProvider = "testdata")
 	public static void testCase001(String user, String pass) throws Exception {
-
-		WebElement username = data.findingElement(By.xpath("//input[@name='username']"));
-		username.sendKeys(user);
-		WebElement password = data.findingElement(By.xpath("//input[@name='password']"));
-		password.sendKeys(pass);
-		WebElement button = data.findingElement(By.tagName("button"));
-		button.click();
+		obj.userName(user);
+		obj.password(pass);
+		obj.button();
 	}
 }

@@ -22,11 +22,11 @@ public class TaxExemptionModule {
 
 	@BeforeTest
 	public void setup() throws Exception {
-		data.setup();
-		driver = data.getDriver();
-		data.login();
-		data.pim();
-		data.addEmployee();
+		PageObject.setup();
+		driver = PageObject.getDriver();
+		PageObject.login();
+		PageObject.pim();
+		PageObject.addEmployee();
 	}
 
 	@AfterTest
